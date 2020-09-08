@@ -39,22 +39,24 @@ function onLoadView() {
                         </button>
                     </div>
                     <div style="text-align: center;">
-                        <img src="` + (myObj[i].gender == "male" ? 'https://lh3.googleusercontent.com/proxy/qMGiVJMgtC-98pu-h2z2lx1aG6bnrKUr490HABW9_1psrENR8ufFA31PBZUT5CL-wg0ILBaaAAZSlUN3_9WNU4DAWOCyQ0u2mgA' : 'https://www.shareicon.net/data/512x512/2016/09/15/829453_user_512x512.png') + `" alt="Avatar" style="width: 150px; height: 150px; padding: 10px;">
+                        <img src="` + (myObj[i].gender == "male" ? 'https://www.shareicon.net/data/2016/05/24/770137_man_512x512.png' : 'https://www.shareicon.net/data/512x512/2016/09/15/829453_user_512x512.png') + `" alt="Avatar" style="width: 150px; height: 150px; padding: 10px;">
                     </div>
                     <div class="card-container">
                         <p>Name:&nbsp;` + myObj[i].name + `</p>
                         <p>ID:&nbsp;` + myObj[i].id + `</p>
-                        <p>Skills:&nbsp;<span id="skills` + i + `" data-editable>` + myObj[i].skills.map(function(j) { return j; }).join(", ") + `</span></p>
+                        <p>Skills:&nbsp;<span id="skills` + i + `">` + myObj[i].skills.map(function(j) { return j; }).join(", ") + `</span></p>
                         <p>Project:&nbsp;` + myObj[i].project + `</p>
                         <p>HCM:&nbsp;` + myObj[i].hcm + `</p>
                     </div>
                     <div style="text-align: right; padding: 20px;">
-                        <button class="edit" id="edit">Edit</button>
-                        <span class="text">/</span>
-                        <button class="save" id="save">Save</button>
+                        <button class="edit" id="edit-button` + i + `" onclick="editGrid(` + i + `)">Edit</button>
+                        <button class="save" id="save-button` + i + `" onclick="saveGrid(` + i + `)">Save</button>
                     </div>
                 </div>
             </div> `;
+
+                $("#save-button" + i).hide();
+                $("#edit-button" + i).show();
             }
 
         });
@@ -76,22 +78,24 @@ function gridView() {
                                 </button>
                             </div>
                             <div style="text-align: center;">
-                                <img src="` + (myObj[i].gender == "male" ? 'https://lh3.googleusercontent.com/proxy/qMGiVJMgtC-98pu-h2z2lx1aG6bnrKUr490HABW9_1psrENR8ufFA31PBZUT5CL-wg0ILBaaAAZSlUN3_9WNU4DAWOCyQ0u2mgA' : 'https://www.shareicon.net/data/512x512/2016/09/15/829453_user_512x512.png') + `" alt="Avatar" style="width: 150px; height: 150px; padding: 10px;">
+                                <img src="` + (myObj[i].gender == "male" ? 'https://www.shareicon.net/data/2016/05/24/770137_man_512x512.png' : 'https://www.shareicon.net/data/512x512/2016/09/15/829453_user_512x512.png') + `" alt="Avatar" style="width: 150px; height: 150px; padding: 10px;">
                             </div>
                             <div class="card-container">
                                 <p>Name:&nbsp;` + myObj[i].name + `</p>
                                 <p>ID:&nbsp;` + myObj[i].id + `</p>
-                                <p>Skills:&nbsp;<span id="skills` + i + `" data-editable>` + myObj[i].skills.map(function(j) { return j; }).join(", ") + `</span></p>
+                                <p>Skills:&nbsp;<span id="skills` + i + `">` + myObj[i].skills.map(function(j) { return j; }).join(", ") + `</span></p>
                                 <p>Project:&nbsp;` + myObj[i].project + `</p>
                                 <p>HCM:&nbsp;` + myObj[i].hcm + `</p>
                             </div>
                             <div style="text-align: right; padding: 20px;">
-                                <button class="edit" id="edit">Edit</button>
-                                <span class="text">/</span>
-                                <button class="save" id="save">Save</button>
+                                <button class="edit" id="edit-button` + i + `" onclick="editGrid(` + i + `)">Edit</button>
+                                <button class="save" id="save-button` + i + `" onclick="saveGrid(` + i + `)">Save</button>
                             </div>
                         </div>
                     </div> `;
+
+        $("#save-button" + i).hide();
+        $("#edit-button" + i).show();
     }
 
 }
@@ -115,21 +119,24 @@ function deleteObjectFromGrid(index) {
                             </button>
                         </div>
                         <div style="text-align: center;">
-                            <img src="` + (myObj[i].gender == "male" ? 'https://lh3.googleusercontent.com/proxy/qMGiVJMgtC-98pu-h2z2lx1aG6bnrKUr490HABW9_1psrENR8ufFA31PBZUT5CL-wg0ILBaaAAZSlUN3_9WNU4DAWOCyQ0u2mgA' : 'https://www.shareicon.net/data/512x512/2016/09/15/829453_user_512x512.png') + `" alt="Avatar" style="width: 150px; height: 150px; padding: 10px;">
+                            <img src="` + (myObj[i].gender == "male" ? 'https://www.shareicon.net/data/2016/05/24/770137_man_512x512.png' : 'https://www.shareicon.net/data/512x512/2016/09/15/829453_user_512x512.png') + `" alt="Avatar" style="width: 150px; height: 150px; padding: 10px;">
                         </div>
                         <div class="card-container">
                             <p>Name:&nbsp;` + myObj[i].name + `</p>
                             <p>ID:&nbsp;` + myObj[i].id + `</p>
-                            <p>Skills:&nbsp;<span id="skills" data-editable>` + myObj[i].skills.map(function(j) { return j; }).join(", ") + `</span></p>
+                            <p>Skills:&nbsp;<span id="skills` + i + `">` + myObj[i].skills.map(function(j) { return j; }).join(", ") + `</span></p>
                             <p>Project:&nbsp;` + myObj[i].project + `</p>
                             <p>HCM:&nbsp;` + myObj[i].hcm + `</p>
                         </div>
                         <div style="text-align: right; padding: 20px;">
-                            <button class="edit" id="edit">Edit</button>
-                            <button class="save" id="save">Save</button>
+                            <button class="edit" id="edit-button` + i + `" onclick="editGrid(` + i + `)">Edit</button>
+                            <button class="save" id="save-button` + i + `" onclick="saveGrid(` + i + `)">Save</button>
                         </div>
                     </div>
                 </div> `;
+
+        $("#save-button" + i).hide();
+        $("#edit-button" + i).show();
     }
 
 }
@@ -159,14 +166,20 @@ function listView() {
                         <td>` + myObj[i].project + `</td>
                         <td>` + myObj[i].hcm + `</td>
                         <td>
-                            <button class="icon-button-delete">
+                            <button class="icon-button-edit" id="edit` + i + `" onclick="editList(` + i + `)">
                                 <i class="far fa-edit" style="font-size: 22px; color: #000;"></i>
+                            </button>
+                            <button class="icon-button-save" id="save` + i + `" onclick="getValue(` + i + `)">
+                                <i class="fas fa-save" style="font-size: 22px; color: #000;"></i>
                             </button>
                             <button class="icon-button-delete" onclick="deleteObjectFromList(` + i + `)">
                                 <i class="fas fa-times-circle" style="font-size: 22px; color: red;"></i>
                             </button>
                         </td>
                     </tr>`;
+
+        $("#save" + i).hide();
+        $("#edit" + i).show();
     }
 
 }
@@ -199,38 +212,74 @@ function deleteObjectFromList(l_index) {
                         <td>` + myObj[i].project + `</td>
                         <td>` + myObj[i].hcm + `</td>
                         <td>
-                            <button class="icon-button-delete">
+                            <button class="icon-button-edit" id="edit` + i + `" onclick="editList(` + i + `)">
                                 <i class="far fa-edit" style="font-size: 22px; color: #000;"></i>
+                            </button>
+                            <button class="icon-button-save" id="save` + i + `" onclick="getValue(` + i + `)">
+                                <i class="fas fa-save" style="font-size: 22px; color: #000;"></i>
                             </button>
                             <button class="icon-button-delete" onclick="deleteObjectFromList(` + i + `)">
                                 <i class="fas fa-times-circle" style="font-size: 22px; color: red;"></i>
                             </button>
                         </td>
                     </tr>`;
+
+        $("#save" + i).hide();
+        $("#edit" + i).show();
     }
 
 }
 
+// Edit on click for List
+function editList(index) {
+    $("#edit" + index).hide();
+    $("#save" + index).show();
+    document.getElementById("list-view").rows[index + 1].cells.item(2).innerHTML = '<input id="myInput' + index + '" type="text" />';
+}
+
+// Save on click for List
+function getValue(index) {
+    $("#edit" + index).show();
+    $("#save" + index).hide();
+    var inputVal = document.getElementById("myInput" + index).value;
+    document.getElementById("list-view").rows[index + 1].cells.item(2).innerHTML = inputVal;
+}
+
+// Edit on click for Grid
+function editGrid(index) {
+    $("#edit-button" + index).hide();
+    $("#save-button" + index).show();
+    document.getElementById("skills" + index).innerHTML = '<input id="myVal' + index + '" type="text" />';
+}
+
+// Save on click for Grid
+function saveGrid(index) {
+    $("#edit-button" + index).show();
+    $("#save-button" + index).hide();
+    var inputVal = document.getElementById("myVal" + index).value;
+    document.getElementById("skills" + index).innerHTML = inputVal;
+}
+
 //Edit & Save on click
-$('body').on('click', '[data-editable]', function() {
+// $('body').on('click', '[data-editable]', function() {
 
-    var $el = $(this);
+//     var $el = $(this);
 
-    var $input = $('<input/>').val($el.text());
-    $el.replaceWith($input);
+//     var $input = $('<input/>').val($el.text());
+//     $el.replaceWith($input);
 
-    var save = function() {
-        var $p = $('<span id="skills" data-editable />').text($input.val());
-        $input.replaceWith($p);
-    };
+//     var save = function() {
+//         var $p = $('<span id="skills" data-editable />').text($input.val());
+//         $input.replaceWith($p);
+//     };
 
-    /**
-      We're defining the callback with `one`, because we know that
-      the element will be gone just after that, and we don't want 
-      any callbacks leftovers take memory. 
-      Next time `p` turns into `input` this single callback 
-      will be applied again.
-    */
-    $input.one('blur', save).focus();
+//     /**
+//       We're defining the callback with `one`, because we know that
+//       the element will be gone just after that, and we don't want 
+//       any callbacks leftovers take memory. 
+//       Next time `p` turns into `input` this single callback 
+//       will be applied again.
+//     */
+//     $input.one('blur', save).focus();
 
-});
+// });

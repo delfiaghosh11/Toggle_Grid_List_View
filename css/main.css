@@ -106,12 +106,16 @@ body {
     cursor: pointer;
 }
 
+.icon-button-edit,
+.icon-button-save,
 .icon-button-delete {
     background-color: transparent;
     border: none;
     outline: none;
 }
 
+.icon-button-edit,
+.icon-button-save,
 .icon-button-delete:hover {
     cursor: pointer;
 }
