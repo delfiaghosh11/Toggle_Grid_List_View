@@ -343,7 +343,7 @@ body {
     border: 1px solid #D9E4E6;
 }
 
-.responstable tr:nth-child(odd) {
+.responstable tr {
     background-color: #EAF3F3;
 }
 
